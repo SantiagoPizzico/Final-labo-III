@@ -42,9 +42,9 @@
 | - materiaId: int              | |
 | - nombre: String              | |
 | - anio: int                   | |
-| - cuatrimestre: int          | |
+| - cuatrimestre: int           | |
 | - profesor: Profesor          | |
-| - correlatividades: List<Materia> |
+| - correlatividades:List<Materia> |
 +-------------------------------+ |
 | + agregarCorrelatividad(m)    | |
 +-------------------------------+ |
@@ -56,11 +56,11 @@
 +---------------------------+    |
 | - id: long                |    |
 | - nombre: String          |    |
-| - apellido: String        |    |
-| - titulo: String          |    |
-| - materiasDictadas: List<Materia> |
-+---------------------------+    |
-| + setMateriasDictadas(m) |    |
+| - apellido: String        |     |
+| - titulo: String          |     |
+| - materiasDictadas:List<Materia> |
++---------------------------+     |
+| + setMateriasDictadas(m) |      |
 +---------------------------+    |
             ^                    |
             | 1                  |
