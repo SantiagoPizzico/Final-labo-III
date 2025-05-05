@@ -1,0 +1,91 @@
++-------------------------------+
+|           Alumno             |
++-------------------------------+
+| - id: long                   |
+| - nombre: String             |
+| - apellido: String           |
+| - dni: Long                  |
+| - asignaturas: List<Asignatura> |
++-------------------------------+
+| + agregarAsignatura(a)       |
+| + aprobarAsignatura(a, nota) |
+| + cursarAsignatura(a)        |
+| + actualizarAsignatura(a)    |
++-------------------------------+
+            |
+            | 1
+            | 
+            o---------------------+
+                                  |
+                                  | *
++-------------------------------+ |
+|         Asignatura            | |
++-------------------------------+ |
+| - materia: Materia            | |
+| - estado: EstadoAsignatura    | |
+| - nota: Integer               | |
+| - asignaturaId: Long          | |
++-------------------------------+ |
+| + cursarAsignatura()          | |
+| + aprobarAsignatura(nota)     | |
+| + getCorrelatividades()       | |
++-------------------------------+ |
+            |                     |
+            | 1                   |
+            |                     |
+            o-------------+       |
+                          |       |
+                          | *     |
++-------------------------------+ |
+|           Materia             | |
++-------------------------------+ |
+| - materiaId: int              | |
+| - nombre: String              | |
+| - anio: int                   | |
+| - cuatrimestre: int          | |
+| - profesor: Profesor          | |
+| - correlatividades: List<Materia> |
++-------------------------------+ |
+| + agregarCorrelatividad(m)    | |
++-------------------------------+ |
+            ^                     |
+            | *                   |
+            |                     |
++---------------------------+    |
+|          Profesor         |    |
++---------------------------+    |
+| - id: long                |    |
+| - nombre: String          |    |
+| - apellido: String        |    |
+| - titulo: String          |    |
+| - materiasDictadas: List<Materia> |
++---------------------------+    |
+| + setMateriasDictadas(m) |    |
++---------------------------+    |
+            ^                    |
+            | 1                  |
+            |                    |
+            o--------------------+
+                  *
+
++---------------------------+
+|     EstadoAsignatura     |
++---------------------------+
+| NO_CURSADA               |
+| CURSADA                  |
+| APROBADA                 |
++---------------------------+
+
+Asignatura --> EstadoAsignatura (* -- 1)
+
++---------------------------+
+|          Carrera          |
++---------------------------+
+| - nombre: String          |
+| - cantidadAnios: int      |
+| - materiasList: List<Materia> |
++---------------------------+
+| + agregarMateria(m)       |
++---------------------------+
+
+Carrera o--* Materia (materiasList)
