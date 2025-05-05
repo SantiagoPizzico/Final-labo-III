@@ -1,5 +1,3 @@
-# Final-labo-III
-
 # API REST - Gestión de Alumnos, Materias, Carreras y Profesores
 
 Este proyecto es una API REST desarrollada en Java con Spring Boot para gestionar alumnos, materias, carreras y profesores en una institución educativa. Utiliza almacenamiento en memoria (sin base de datos) y sigue una arquitectura en capas.
