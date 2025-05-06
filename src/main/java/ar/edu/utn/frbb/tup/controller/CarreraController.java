@@ -48,7 +48,7 @@ public class CarreraController {
         return ResponseEntity.ok(carreras);
     }
 
-    @PostMapping("/id/{id}/materias")
+    @PostMapping("/{nombre}/materias")
     public ResponseEntity<?> agregarMateriaACarrera(
             @PathVariable String nombre,
             @RequestBody Map<String, Integer> body) {
