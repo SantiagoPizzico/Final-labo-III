@@ -39,15 +39,15 @@ public class Valid {
             throw new ResourceNotFoundException("Asignatura", String.valueOf(asignatura.getAsignaturaId()));
         }
     }
-
-    // Valida que todas las correlatividades estén aprobadas antes de cursar/aprobar
+    
+    // Valida que todas las correlatividades estén cursadas o aprobadas antes de cursar/aprobar
     public static void validarCorrelatividadesAprobadas(List<Asignatura> asignaturas, List<Materia> correlatividades, String nombreAsignatura) {
         for (Materia correlativa : correlatividades) {
-            boolean aprobada = asignaturas.stream()
+            boolean cursadaOAprobada = asignaturas.stream()
                 .filter(a -> correlativa.getNombre().equals(a.getNombreAsignatura()))
-                .anyMatch(a -> EstadoAsignatura.APROBADA.equals(a.getEstado()));
-            if (!aprobada) {
-                throw new BusinessRuleException("La asignatura " + correlativa.getNombre() + " debe estar aprobada para cursar/aprobar " + nombreAsignatura);
+                .anyMatch(a -> EstadoAsignatura.CURSADA.equals(a.getEstado()) || EstadoAsignatura.APROBADA.equals(a.getEstado()));
+            if (!cursadaOAprobada) {
+                throw new BusinessRuleException("La asignatura " + correlativa.getNombre() + " debe estar cursada o aprobada para cursar/aprobar " + nombreAsignatura);
             }
         }
     }

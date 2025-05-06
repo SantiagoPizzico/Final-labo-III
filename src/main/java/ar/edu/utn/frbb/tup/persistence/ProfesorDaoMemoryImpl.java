@@ -22,6 +22,12 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
     }
 
     @Override
+    public Profesor update(Profesor profesor) {
+        repositorioProfesores.put(profesor.getId(), profesor);
+        return profesor;
+    }
+
+    @Override
     public Profesor findById(long id) {
         return repositorioProfesores.get(id);
     }

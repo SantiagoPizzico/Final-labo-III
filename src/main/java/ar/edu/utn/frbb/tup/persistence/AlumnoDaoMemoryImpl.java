@@ -12,11 +12,11 @@ import java.util.Map;
 public class AlumnoDaoMemoryImpl implements AlumnoDao {
 
     private static final Map<Long, Alumno> repositorioAlumnos = new HashMap<>();
-    private static long currentId = 0;
+    private static long currentId = 1;
 
     @Override
     public Alumno save(Alumno alumno) {
-        alumno.setId(++currentId);
+        alumno.setId(currentId++);
         repositorioAlumnos.put(alumno.getId(), alumno);
         return alumno;
     }

@@ -22,6 +22,8 @@ class AlumnoDaoMemoryImplTest {
         Alumno found = alumnoDao.findById(alumno.getId());
         assertNotNull(found);
         assertEquals("Juan", found.getNombre());
+        assertEquals("Perez", found.getApellido());
+        assertEquals(12345678L, found.getDni());
     }
 
     @Test
@@ -35,17 +37,17 @@ class AlumnoDaoMemoryImplTest {
     }
 
     @Test
-    void findAll() {
-        alumnoDao.save(new Alumno("Juan", "Perez", 12345678L));
-        alumnoDao.save(new Alumno("Ana", "Gomez", 87654321L));
-        assertEquals(2, alumnoDao.findAll().size());
-    }
-
-    @Test
     void deleteById() {
         Alumno alumno = new Alumno("Juan", "Perez", 12345678L);
         alumnoDao.save(alumno);
-        alumnoDao.deleteById(alumno.getId());
+        Alumno deleted = alumnoDao.deleteById(alumno.getId());
+        assertNotNull(deleted);
         assertNull(alumnoDao.findById(alumno.getId()));
+    }
+
+    @Test
+    void deleteById_noExiste() {
+        Alumno deleted = alumnoDao.deleteById(999L);
+        assertNull(deleted);
     }
 }

@@ -10,7 +10,7 @@ class ProfesorTest {
         Profesor profesor = new Profesor("Luciano", "Salotto", "Licenciado");
         Materia materia = new Materia("Laboratorio 1", 1, 1, profesor);
 
-        profesor.setMateriasDictadas(materia);
+        profesor.agregarMateriaDictada(materia);
 
         assertEquals(1, profesor.getMateriasDictadas().size());
         assertEquals("Laboratorio 1", profesor.getMateriasDictadas().get(0).getNombre());
@@ -21,8 +21,8 @@ class ProfesorTest {
         Profesor profesor = new Profesor("Luciano", "Salotto", "Licenciado");
         Materia materia = new Materia("Laboratorio 1", 1, 1, profesor);
 
-        profesor.setMateriasDictadas(materia);
+        profesor.agregarMateriaDictada(materia);
         assertThrows(ar.edu.utn.frbb.tup.exception.DuplicateResourceException.class,
-            () -> profesor.setMateriasDictadas(materia));
+            () -> profesor.agregarMateriaDictada(materia));
     }
 }

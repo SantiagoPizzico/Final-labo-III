@@ -7,6 +7,8 @@ import java.util.List;
 public interface MateriaDao {
     Materia save(Materia materia);
 
+    Materia update(Materia materia);
+
     Materia findById(int id);
 
     List<Materia> findAll();

@@ -20,6 +20,12 @@ public class CarreraDaoMemoryImpl implements CarreraDao {
     }
 
     @Override
+    public Carrera update(Carrera carrera) {
+        repositorioCarreras.put(carrera.getNombre(), carrera);
+        return carrera;
+    }
+
+    @Override
     public Carrera findByNombre(String nombre) {
         return repositorioCarreras.get(nombre);
     }

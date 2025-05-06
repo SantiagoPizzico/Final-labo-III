@@ -77,8 +77,8 @@ public class ProfesorServiceImpl implements ProfesorService {
         if (materia == null) {
             throw new ValidationException("La materia no puede ser nula.");
         }
-        profesor.setMateriasDictadas(materia);
-        profesorDao.save(profesor);
+        profesor.agregarMateriaDictada(materia);
+        profesorDao.update(profesor);
     }
     
     @Override

@@ -41,14 +41,15 @@ public class MateriaController {
     }
 
     @PostMapping("/{id}/correlatividades")
-    public ResponseEntity<Void> agregarCorrelatividad(
+    public ResponseEntity<?> agregarCorrelatividad(
             @PathVariable int id,
             @RequestBody Materia correlativa) {
-        // Solo se usará el id y el nombre de la materia correlativa recibida
         Materia correlativaSimple = new Materia();
         correlativaSimple.setMateriaId(correlativa.getMateriaId());
         correlativaSimple.setNombre(correlativa.getNombre());
         materiaService.agregarCorrelatividad(id, correlativaSimple);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(
+            java.util.Collections.singletonMap("Correlativa agregada correctamente.", correlativaSimple)
+        );
     }
 }

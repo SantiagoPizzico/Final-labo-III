@@ -132,7 +132,7 @@ class MateriaServiceImplTest {
 
         assertEquals(1, materia.getCorrelatividades().size());
         assertEquals("Programación I", materia.getCorrelatividades().get(0).getNombre());
-        verify(materiaDao).save(materia);
+        verify(materiaDao).update(materia);
     }
 
     @Test

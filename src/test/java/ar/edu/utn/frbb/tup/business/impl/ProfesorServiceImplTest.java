@@ -113,7 +113,7 @@ class ProfesorServiceImplTest {
         profesorService.asignarMateriaAProfesor(1L, materia);
 
         assertTrue(profesor.getMateriasDictadas().contains(materia));
-        verify(profesorDao).save(profesor);
+        verify(profesorDao).update(profesor);
     }
 
     @Test

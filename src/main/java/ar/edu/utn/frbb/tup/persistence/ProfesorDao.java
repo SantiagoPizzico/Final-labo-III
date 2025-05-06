@@ -7,6 +7,8 @@ import java.util.List;
 public interface ProfesorDao {
     Profesor save(Profesor profesor);
 
+    Profesor update(Profesor profesor);
+
     Profesor findById(long id);
 
     List<Profesor> findAll();

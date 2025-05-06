@@ -80,6 +80,16 @@ class CarreraServiceImplTest {
     }
 
     @Test
+    void buscarCarrerasPorCadena_ok() {
+        Carrera c1 = new Carrera("Tecnicatura Universitaria en Programacion", 3);
+        Carrera c2 = new Carrera("Tecnicatura Universitaria en Sistemas", 4);
+        when(carreraDao.findAll()).thenReturn(List.of(c1, c2));
+        List<Carrera> resultado = carreraService.buscarCarrerasPorCadena("program");
+        assertEquals(1, resultado.size());
+        assertEquals("Tecnicatura Universitaria en Programacion", resultado.get(0).getNombre());
+    }
+
+    @Test
     void obtenerTodasLasCarreras_ok() {
         Carrera c1 = new Carrera("Tecnicatura Universitaria en Programacion", 3);
         Carrera c2 = new Carrera("Tecnicatura Universitaria en Sistemas", 4);
@@ -101,7 +111,7 @@ class CarreraServiceImplTest {
 
         assertEquals(1, carrera.getMateriasList().size());
         assertEquals("Programación I", carrera.getMateriasList().get(0).getNombre());
-        verify(carreraDao).save(carrera);
+        verify(carreraDao).update(carrera);
     }
 
     @Test

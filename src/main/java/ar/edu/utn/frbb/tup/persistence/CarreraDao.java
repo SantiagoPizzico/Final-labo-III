@@ -7,6 +7,8 @@ import java.util.List;
 public interface CarreraDao {
     Carrera save(Carrera carrera);
 
+    Carrera update(Carrera carrera);
+
     Carrera findByNombre(String nombre);
 
     List<Carrera> findAll();

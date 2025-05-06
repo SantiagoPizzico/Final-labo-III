@@ -3,6 +3,7 @@ package ar.edu.utn.frbb.tup.model.dto;
 public class AsignaturaDto {
     private int materiaId;
 
+    
     public int getMateriaId() {
         return materiaId;
     }

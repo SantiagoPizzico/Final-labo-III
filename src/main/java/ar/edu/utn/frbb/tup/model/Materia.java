@@ -66,9 +66,6 @@ public class Materia {
     public void setProfesor(Profesor profesor) {
         if (profesor != null) {
             this.profesor = profesor;
-            if (profesor.getMateriasDictadas().contains(this)) {
-                throw new DuplicateResourceException("Materia", "nombre", this.nombre);
-            }
             profesor.getMateriasDictadas().add(this);
         }
     }

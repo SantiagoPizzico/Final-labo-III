@@ -46,11 +46,13 @@ public class ProfesorController {
     }
 
     @PostMapping("/{id}/materias")
-    public ResponseEntity<Void> asignarMateriaAProfesor(@PathVariable long id, @Valid @RequestBody Materia materia) {
+    public ResponseEntity<?> asignarMateriaAProfesor(@PathVariable long id, @Valid @RequestBody Materia materia) {
         profesorService.asignarMateriaAProfesor(id, materia);
-        return 
-        ResponseEntity.ok().build();
+        return ResponseEntity.ok(
+            java.util.Collections.singletonMap("Materia asignada correctamente", materia.getNombre())
+        );
     }
+
     @GetMapping("/{id}/materias")
     public ResponseEntity<List<Materia>> obtenerMateriasDictadasPorProfesor(@PathVariable long id) {
         Profesor profesor = profesorService.buscarProfesorPorId(id);
@@ -61,7 +63,7 @@ public class ProfesorController {
     public ResponseEntity<?> eliminarProfesor(@PathVariable long id) {
         profesorService.eliminarProfesorPorId(id);
         return ResponseEntity.ok(
-            java.util.Collections.singletonMap("mensaje", "Profesor eliminado correctamente")
+            java.util.Collections.singletonMap("Profesor eliminado correctamente", id)
         );
     }
 }

@@ -94,6 +94,6 @@ public class MateriaServiceImpl implements MateriaService {
         correlativaSimple.setMateriaId(correlativaExistente.getMateriaId());
         correlativaSimple.setNombre(correlativaExistente.getNombre());
         materia.agregarCorrelatividad(correlativaSimple);
-        materiaDao.save(materia);
+        materiaDao.update(materia);
     }
 }

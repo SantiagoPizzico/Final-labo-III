@@ -10,8 +10,9 @@ public interface CarreraService {
     
     Carrera crearCarrera(String nombre, int cantidadAnios);
     Carrera buscarCarreraPorNombre(String nombre);
+    List<Carrera> buscarCarrerasPorCadena(String cadena);
     List<Carrera> obtenerTodasLasCarreras();
-    void agregarMateriaACarrera(String nombreCarrera, int materiaId);
+    void agregarMateriaACarrera(String nombre, int materiaId);
     List<Materia> obtenerMaterias(String nombreCarrera);
 
 }

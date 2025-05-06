@@ -52,6 +52,15 @@ public class CarreraServiceImpl implements CarreraService {
         return carrera;
     }
 
+
+    @Override
+    public List<Carrera> buscarCarrerasPorCadena(String cadena) {
+        String lower = cadena.toLowerCase();
+        return carreraDao.findAll().stream()
+            .filter(c -> c.getNombre() != null && c.getNombre().toLowerCase().contains(lower))
+            .toList();
+    }
+
     @Override
     public List<Carrera> obtenerTodasLasCarreras() {
         return carreraDao.findAll();
@@ -59,8 +68,8 @@ public class CarreraServiceImpl implements CarreraService {
 
     @Override
     @Transactional
-    public void agregarMateriaACarrera(String nombreCarrera, int materiaId) {
-        Carrera carrera = buscarCarreraPorNombre(nombreCarrera);
+    public void agregarMateriaACarrera(String nombre, int materiaId) {
+        Carrera carrera = buscarCarreraPorNombre(nombre);
         Materia materia;
         try {
             materia = materiaService.buscarMateriaPorId(materiaId);
@@ -69,7 +78,7 @@ public class CarreraServiceImpl implements CarreraService {
         }
         // Validación de duplicados ya está en Carrera.agregarMateria
         carrera.agregarMateria(materia);
-        carreraDao.save(carrera);
+        carreraDao.update(carrera);
     }
 
     @Override

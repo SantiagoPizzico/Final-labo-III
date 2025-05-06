@@ -62,7 +62,7 @@ public class Profesor {
         return materiasDictadas;
     }
 
-    public void setMateriasDictadas(Materia materiaDictada) {
+    public void agregarMateriaDictada(Materia materiaDictada) {
         Valid.validarMateriaNoDuplicada(this.materiasDictadas, materiaDictada);
         this.materiasDictadas.add(materiaDictada);
     }

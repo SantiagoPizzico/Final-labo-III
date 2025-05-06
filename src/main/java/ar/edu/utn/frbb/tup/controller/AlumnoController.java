@@ -98,7 +98,7 @@ public class AlumnoController {
     public ResponseEntity<?> eliminarAlumno(@PathVariable long id) {
         alumnoService.eliminarAlumnoPorId(id);
         return ResponseEntity.ok(
-            java.util.Collections.singletonMap("mensaje", "Alumno eliminado correctamente")
+            java.util.Collections.singletonMap("Alumno eliminado correctamente.", id)
         );
     }
 
@@ -112,7 +112,7 @@ public class AlumnoController {
                 .findFirst()
                 .orElseThrow(() -> new ar.edu.utn.frbb.tup.exception.ResourceNotFoundException("Asignatura", String.valueOf(asignaturaId)));
         alumnoService.cursarAsignatura(alumnoId, asignatura);
-        return ResponseEntity.ok(java.util.Collections.singletonMap("mensaje", "Asignatura cursada correctamente"));
+        return ResponseEntity.ok(java.util.Collections.singletonMap("Asignatura cursada correctamente", asignatura));
     }
 
     @PostMapping("/{alumnoId}/asignaturas/{asignaturaId}/aprobar")
@@ -129,12 +129,12 @@ public class AlumnoController {
                 .findFirst()
                 .orElseThrow(() -> new ar.edu.utn.frbb.tup.exception.ResourceNotFoundException("Asignatura", String.valueOf(asignaturaId)));
         alumnoService.aprobarAsignatura(alumnoId, asignatura, nota);
-        return ResponseEntity.ok(java.util.Collections.singletonMap("mensaje", "Asignatura aprobada correctamente"));
+        return ResponseEntity.ok(java.util.Collections.singletonMap("Asignatura aprobada correctamente", asignatura));
     }
     
     @DeleteMapping("/{id}/asignaturas/{asignaturaId}")
     public ResponseEntity<?> eliminarAsignaturaDeAlumno(@PathVariable long id, @PathVariable long asignaturaId) {
         alumnoService.eliminarAsignaturaDeAlumno(id, asignaturaId);
-        return ResponseEntity.ok(java.util.Collections.singletonMap("mensaje", "Asignatura eliminada correctamente"));
+        return ResponseEntity.ok(java.util.Collections.singletonMap("Asignatura eliminada correctamente", asignaturaId));
     }
 }

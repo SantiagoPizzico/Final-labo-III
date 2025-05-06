@@ -16,10 +16,12 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
 
     @Override
     public Materia save(Materia materia) {
-        // Solo asigna un nuevo ID si la materia no tiene uno (es nueva)
-        if (materia.getMateriaId() == 0) {
-            materia.setMateriaId(currentId++);
-        }
+        materia.setMateriaId(currentId++);
+        repositorioMaterias.put(materia.getMateriaId(), materia);
+        return materia;
+    }
+
+    public Materia update(Materia materia) {
         repositorioMaterias.put(materia.getMateriaId(), materia);
         return materia;
     }

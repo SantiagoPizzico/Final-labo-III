@@ -29,7 +29,13 @@ public class CarreraController {
         return ResponseEntity.ok(nuevaCarrera);
     }
 
-    // Endpoint para obtener una carrera por su nombre
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Carrera>> buscarCarrerasPorCadena(@RequestParam("q") String cadena) {
+        List<Carrera> carreras = carreraService.buscarCarrerasPorCadena(cadena);
+        return ResponseEntity.ok(carreras);
+    }
+
+
     @GetMapping("/{nombre}")
     public ResponseEntity<Carrera> obtenerCarreraPorNombre(@PathVariable String nombre) {
         Carrera carrera = carreraService.buscarCarreraPorNombre(nombre);
@@ -42,7 +48,7 @@ public class CarreraController {
         return ResponseEntity.ok(carreras);
     }
 
-    @PostMapping("/{nombre}/materias")
+    @PostMapping("/id/{id}/materias")
     public ResponseEntity<?> agregarMateriaACarrera(
             @PathVariable String nombre,
             @RequestBody Map<String, Integer> body) {
@@ -51,7 +57,7 @@ public class CarreraController {
         return ResponseEntity.ok(
             Map.of(
                 "mensaje", "Materia agregada correctamente a la carrera",
-                "carrera", nombre,
+                "carreraId", nombre,
                 "materiaId", materiaId
             )
         );
